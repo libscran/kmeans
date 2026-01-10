@@ -53,7 +53,7 @@ res.clusters; // Vector of cluster assignments
 res.details; // Details from the clustering algorithm
 ```
 
-See the [reference documentation](https://ltla.github.io/CppKmeans) for more details.
+See the [reference documentation](https://libscran.github.io/kmeans) for more details.
 
 ## Changing parameters 
 
@@ -174,7 +174,7 @@ include(FetchContent)
 
 FetchContent_Declare(
   kmeans 
-  GIT_REPOSITORY https://github.com/libscran/CppKmeans
+  GIT_REPOSITORY https://github.com/libscran/kmeans
   GIT_TAG master # or any version of interest
 )
 

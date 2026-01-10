@@ -16,7 +16,7 @@ target_include_directories(kmeans INTERFACE
 target_compile_features(kmeans INTERFACE cxx_std_17)
 
 # Dependencies
-option(KMEANS_FETCH_EXTERN "Automatically fetch CppKmeans's external dependencies." ON)
+option(KMEANS_FETCH_EXTERN "Automatically fetch kmeans's external dependencies." ON)
 if(KMEANS_FETCH_EXTERN)
     add_subdirectory(extern)
 else()
@@ -29,9 +29,9 @@ target_link_libraries(kmeans INTERFACE ltla::aarand ltla::subpar ltla::sanisizer
 
 # Tests
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-    option(KMEANS_TESTS "Build CppKmeans's test suite." ON)
+    option(KMEANS_TESTS "Build kmeans's test suite." ON)
 else()
-    option(KMEANS_TESTS "Build CppKmeans's test suite." OFF)
+    option(KMEANS_TESTS "Build kmeans's test suite." OFF)
 endif()
 if(KMEANS_TESTS)
     include(CTest)
