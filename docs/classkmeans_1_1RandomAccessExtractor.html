@@ -157,7 +157,8 @@ template&lt;typename Index_ , typename Data_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to an array of length equal to <code><a class="el" href="classkmeans_1_1Matrix.html#a79897537157a5a1fd77ae3026687c615">Matrix::num_dimensions()</a></code>, containing the coordinates for observation <code>i</code>.</dd></dl>
-<p>This will only be called within a single thread and may modify internal data members of a <code><a class="el" href="classkmeans_1_1RandomAccessExtractor.html" title="Extractor for accessing random observations.">RandomAccessExtractor</a></code> subclass. </p>
+<p>The pointer returned by this method should not be used after the next call to <code><a class="el" href="#adebd74aefe85dac67839fe4d32debd4f">get_observation()</a></code> for the same <code><a class="el" href="classkmeans_1_1RandomAccessExtractor.html" title="Extractor for accessing random observations.">RandomAccessExtractor</a></code> instance. Similarly, it should not be used after the instance is destroyed.</p>
+<p>This method will only be called within a single thread and may modify internal data members of its <code><a class="el" href="classkmeans_1_1RandomAccessExtractor.html" title="Extractor for accessing random observations.">RandomAccessExtractor</a></code> instance. </p>
 
 </div>
 </div>

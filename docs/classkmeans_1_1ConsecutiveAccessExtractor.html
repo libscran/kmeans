@@ -152,7 +152,8 @@ template&lt;typename Index_ , typename Data_ &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Pointer to an array of length equal to <code><a class="el" href="classkmeans_1_1Matrix.html#a79897537157a5a1fd77ae3026687c615">Matrix::num_dimensions()</a></code>, containing the coordinates for the next observation.</dd></dl>
 <p>The first call to this method should return the coordinates of the <code>start</code> observation from <code><a class="el" href="classkmeans_1_1Matrix.html#a7f1e254ff70bf9f7aa7f2c2be4380636">Matrix::new_extractor()</a></code>. The next call should return <code>start + 1</code>, etc. until a maximum of <code>length</code> calls have been performed.</p>
-<p>This method will only be called within a single thread and may modify internal data members of a <code><a class="el" href="classkmeans_1_1ConsecutiveAccessExtractor.html" title="Extractor for accessing consecutive observations.">ConsecutiveAccessExtractor</a></code> subclass. </p>
+<p>The pointer returned by this method should not be used after the next call to <code><a class="el" href="#a8e3be3ef568812836829aaa7333e94e1">get_observation()</a></code> for the same <code><a class="el" href="classkmeans_1_1ConsecutiveAccessExtractor.html" title="Extractor for accessing consecutive observations.">ConsecutiveAccessExtractor</a></code> instance. Similarly, it should not be used after the instance is destroyed.</p>
+<p>This method will only be called within a single thread and may modify internal data members of its <code><a class="el" href="classkmeans_1_1ConsecutiveAccessExtractor.html" title="Extractor for accessing consecutive observations.">ConsecutiveAccessExtractor</a></code> instance. </p>
 
 </div>
 </div>
