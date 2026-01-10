@@ -57,6 +57,14 @@ add_executable(
     src/kmeans.cpp
 )
 decorate_executable(libtest)
+target_compile_definitions(libtest PRIVATE KMEANS_DEBUG_POINTER_USAGE=1) 
+
+# Get some coverage on the regular behavior of a non-debug-mode SimpleMatrix.
+add_executable(
+    mattest 
+    src/SimpleMatrix.cpp
+)
+decorate_executable(mattest)
 
 add_executable(
     cuspartest

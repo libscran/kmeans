@@ -43,7 +43,10 @@ public:
      * @param i Index of the observation.
      * @return Pointer to an array of length equal to `Matrix::num_dimensions()`, containing the coordinates for observation `i`.
      *
-     * This will only be called within a single thread and may modify internal data members of a `RandomAccessExtractor` subclass. 
+     * The pointer returned by this method should not be used after the next call to `get_observation()` for the same `RandomAccessExtractor` instance.
+     * Similarly, it should not be used after the instance is destroyed.
+     *
+     * This method will only be called within a single thread and may modify internal data members of its `RandomAccessExtractor` instance.
      */
     virtual const Data_* get_observation(Index_ i) = 0;
 };
@@ -79,7 +82,10 @@ public:
      * The first call to this method should return the coordinates of the `start` observation from `Matrix::new_extractor()`.
      * The next call should return `start + 1`, etc. until a maximum of `length` calls have been performed.
      *
-     * This method will only be called within a single thread and may modify internal data members of a `ConsecutiveAccessExtractor` subclass. 
+     * The pointer returned by this method should not be used after the next call to `get_observation()` for the same `ConsecutiveAccessExtractor` instance.
+     * Similarly, it should not be used after the instance is destroyed.
+     *
+     * This method will only be called within a single thread and may modify internal data members of its `ConsecutiveAccessExtractor` instance.
      */
     virtual const Data_* get_observation() = 0;
 };
@@ -115,7 +121,10 @@ public:
      * The first call to this method should return the coordinates of the `sequence[0]` observation from `Matrix::new_extractor()`.
      * The next call should return `sequence[1]`, etc. until a maximum of `length` calls have been performed.
      *
-     * This method will only be called within a single thread and may modify internal data members of a `ConsecutiveAccessExtractor` subclass. 
+     * The pointer returned by this method should not be used after the next call to `get_observation()` for the same `IndexedAccessExtractor` instance.
+     * Similarly, it should not be used after the instance is destroyed.
+     *
+     * This method will only be called within a single thread and may modify internal data members of its `IndexedAccessExtractor` instance.
      */
     virtual const Data_* get_observation() = 0;
 };
@@ -171,7 +180,7 @@ public:
 
     /**
      * @param[in] sequence Pointer to an array of sorted and unique indices of observations, to be accessed in the provided order.
-     * It is assumed that the vector will not be deallocated before the destruction of the returned `IndexedAccessWorkspace`.
+     * It is assumed that the vector will not be deallocated before the destruction of the returned `IndexedAccessExtractor`.
      * @param length Number of observations in `sequence`.
      * @return A new indexed-access extractor.
      */
