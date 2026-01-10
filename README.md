@@ -1,9 +1,9 @@
 # C++ library for k-means
 
-![Unit tests](https://github.com/LTLA/CppKmeans/actions/workflows/run-tests.yaml/badge.svg)
-![Documentation](https://github.com/LTLA/CppKmeans/actions/workflows/doxygenate.yaml/badge.svg)
-![stats comparison](https://github.com/LTLA/CppKmeans/actions/workflows/compare-kmeans.yaml/badge.svg)
-[![Codecov](https://codecov.io/gh/LTLA/CppKmeans/branch/master/graph/badge.svg?token=7S231XHC0Q)](https://codecov.io/gh/LTLA/CppKmeans)
+![Unit tests](https://github.com/libscran/kmeans/actions/workflows/run-tests.yaml/badge.svg)
+![Documentation](https://github.com/libscran/kmeans/actions/workflows/doxygenate.yaml/badge.svg)
+![stats comparison](https://github.com/libscran/kmeans/actions/workflows/compare-kmeans.yaml/badge.svg)
+[![Codecov](https://codecov.io/gh/libscran/kmeans/branch/master/graph/badge.svg?token=7S231XHC0Q)](https://codecov.io/gh/libscran/kmeans)
 
 ## Overview
 
@@ -174,7 +174,7 @@ include(FetchContent)
 
 FetchContent_Declare(
   kmeans 
-  GIT_REPOSITORY https://github.com/LTLA/CppKmeans
+  GIT_REPOSITORY https://github.com/libscran/CppKmeans
   GIT_TAG master # or any version of interest
 )
 
