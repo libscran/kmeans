@@ -410,6 +410,27 @@
       <anchor>aa452b7244735d4db34cc2fbac3ea1591</anchor>
       <arglist>(const Index_ *sequence, std::size_t length) const =0</arglist>
     </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>new_known_extractor</name>
+      <anchorfile>classkmeans_1_1Matrix.html</anchorfile>
+      <anchor>a08022a8c5a3e174438cf68b7e7dc7bd7</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>new_known_extractor</name>
+      <anchorfile>classkmeans_1_1Matrix.html</anchorfile>
+      <anchor>ac8de8e6d9c9b5bd5b54a7c5252d6c857</anchor>
+      <arglist>(Index_ start, Index_ length) const</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>new_known_extractor</name>
+      <anchorfile>classkmeans_1_1Matrix.html</anchorfile>
+      <anchor>adb1a607827d65eee70b8b6c4be3ceecc</anchor>
+      <arglist>(const Index_ *sequence, std::size_t length) const</arglist>
+    </member>
   </compound>
   <compound kind="class">
     <name>kmeans::RandomAccessExtractor</name>
@@ -669,6 +690,62 @@
       <anchorfile>classkmeans_1_1SimpleMatrix.html</anchorfile>
       <anchor>a72d6149bbe37c7d300a907dda17568df</anchor>
       <arglist>(const std::size_t num_dimensions, const Index_ num_observations, const Data_ *const data)</arglist>
+    </member>
+    <member kind="function">
+      <type>Index_</type>
+      <name>num_observations</name>
+      <anchorfile>classkmeans_1_1SimpleMatrix.html</anchorfile>
+      <anchor>ab1c29c2d42b55e63a1a5cbe31d7c2aff</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>std::size_t</type>
+      <name>num_dimensions</name>
+      <anchorfile>classkmeans_1_1SimpleMatrix.html</anchorfile>
+      <anchor>a1cf5189215727465f7493be66e9d5c29</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>std::unique_ptr&lt; RandomAccessExtractor&lt; Index_, Data_ &gt; &gt;</type>
+      <name>new_extractor</name>
+      <anchorfile>classkmeans_1_1SimpleMatrix.html</anchorfile>
+      <anchor>a8a5568863be124ffa3fa622406b5309c</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>std::unique_ptr&lt; ConsecutiveAccessExtractor&lt; Index_, Data_ &gt; &gt;</type>
+      <name>new_extractor</name>
+      <anchorfile>classkmeans_1_1SimpleMatrix.html</anchorfile>
+      <anchor>a33e9922a8a8fa81932940d3c8ed18629</anchor>
+      <arglist>(const Index_ start, const Index_ length) const</arglist>
+    </member>
+    <member kind="function">
+      <type>std::unique_ptr&lt; IndexedAccessExtractor&lt; Index_, Data_ &gt; &gt;</type>
+      <name>new_extractor</name>
+      <anchorfile>classkmeans_1_1SimpleMatrix.html</anchorfile>
+      <anchor>a473fbebb16c1ff2744fba34121332a26</anchor>
+      <arglist>(const Index_ *sequence, const std::size_t length) const</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>new_known_extractor</name>
+      <anchorfile>classkmeans_1_1SimpleMatrix.html</anchorfile>
+      <anchor>abb33d826f78240e9a4e0f3e4e808a11b</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>new_known_extractor</name>
+      <anchorfile>classkmeans_1_1SimpleMatrix.html</anchorfile>
+      <anchor>a3ffc43106a9fe9c6870de0dd2640719f</anchor>
+      <arglist>(const Index_ start, const Index_) const</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>new_known_extractor</name>
+      <anchorfile>classkmeans_1_1SimpleMatrix.html</anchorfile>
+      <anchor>aab1630e9e0b77fd418669b202763f75c</anchor>
+      <arglist>(const Index_ *sequence, const std::size_t) const</arglist>
     </member>
   </compound>
   <compound kind="namespace">

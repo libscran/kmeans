@@ -131,6 +131,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7266f580a6b772dd23c42f9d62a077ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa452b7244735d4db34cc2fbac3ea1591" id="r_aa452b7244735d4db34cc2fbac3ea1591"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classkmeans_1_1IndexedAccessExtractor.html">IndexedAccessExtractor</a>&lt; Index_, Data_ &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa452b7244735d4db34cc2fbac3ea1591">new_extractor</a> (const Index_ *sequence, std::size_t length) const =0</td></tr>
 <tr class="separator:aa452b7244735d4db34cc2fbac3ea1591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08022a8c5a3e174438cf68b7e7dc7bd7" id="r_a08022a8c5a3e174438cf68b7e7dc7bd7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08022a8c5a3e174438cf68b7e7dc7bd7">new_known_extractor</a> () const</td></tr>
+<tr class="separator:a08022a8c5a3e174438cf68b7e7dc7bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8de8e6d9c9b5bd5b54a7c5252d6c857" id="r_ac8de8e6d9c9b5bd5b54a7c5252d6c857"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8de8e6d9c9b5bd5b54a7c5252d6c857">new_known_extractor</a> (Index_ start, Index_ length) const</td></tr>
+<tr class="separator:ac8de8e6d9c9b5bd5b54a7c5252d6c857"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb1a607827d65eee70b8b6c4be3ceecc" id="r_adb1a607827d65eee70b8b6c4be3ceecc"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb1a607827d65eee70b8b6c4be3ceecc">new_known_extractor</a> (const Index_ *sequence, std::size_t length) const</td></tr>
+<tr class="separator:adb1a607827d65eee70b8b6c4be3ceecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Index_, typename Data_&gt;<br />
@@ -169,6 +175,8 @@ template&lt;typename Index_ , typename Data_ &gt; </div>
 </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>A new random-access extractor. </dd></dl>
+
+<p>Implemented in <a class="el" href="classkmeans_1_1SimpleMatrix.html#a8a5568863be124ffa3fa622406b5309c">kmeans::SimpleMatrix&lt; Index_, Data_ &gt;</a>.</p>
 
 </div>
 </div>
@@ -209,6 +217,8 @@ template&lt;typename Index_ , typename Data_ &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new indexed-access extractor. </dd></dl>
 
+<p>Implemented in <a class="el" href="classkmeans_1_1SimpleMatrix.html#a473fbebb16c1ff2744fba34121332a26">kmeans::SimpleMatrix&lt; Index_, Data_ &gt;</a>.</p>
+
 </div>
 </div>
 <a id="a7266f580a6b772dd23c42f9d62a077ad" name="a7266f580a6b772dd23c42f9d62a077ad"></a>
@@ -248,6 +258,117 @@ template&lt;typename Index_ , typename Data_ &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new consecutive-access extractor. </dd></dl>
 
+<p>Implemented in <a class="el" href="classkmeans_1_1SimpleMatrix.html#a33e9922a8a8fa81932940d3c8ed18629">kmeans::SimpleMatrix&lt; Index_, Data_ &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a08022a8c5a3e174438cf68b7e7dc7bd7" name="a08022a8c5a3e174438cf68b7e7dc7bd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08022a8c5a3e174438cf68b7e7dc7bd7">&#9670;&#160;</a></span>new_known_extractor() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Data_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classkmeans_1_1Matrix.html">kmeans::Matrix</a>&lt; Index_, Data_ &gt;::new_known_extractor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>A new random-access extractor.</dd></dl>
+<p>Subclasses may override this method to return a pointer to a specific <code><a class="el" href="classkmeans_1_1RandomAccessExtractor.html" title="Extractor for accessing random observations.">RandomAccessExtractor</a></code> subclass. This is used for devirtualization in other <b>kmeans</b> functions. If no override is provided, <code><a class="el" href="#a7f1e254ff70bf9f7aa7f2c2be4380636">new_extractor()</a></code> is called instead. </p>
+
+</div>
+</div>
+<a id="adb1a607827d65eee70b8b6c4be3ceecc" name="adb1a607827d65eee70b8b6c4be3ceecc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb1a607827d65eee70b8b6c4be3ceecc">&#9670;&#160;</a></span>new_known_extractor() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Data_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classkmeans_1_1Matrix.html">kmeans::Matrix</a>&lt; Index_, Data_ &gt;::new_known_extractor </td>
+          <td>(</td>
+          <td class="paramtype">const Index_ *</td>          <td class="paramname"><span class="paramname"><em>sequence</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sequence</td><td>Pointer to a sorted and unique array of observations, see the equivalent <code><a class="el" href="#a7f1e254ff70bf9f7aa7f2c2be4380636">new_extractor()</a></code> overload. </td></tr>
+    <tr><td class="paramname">length</td><td>Length of the array, see the equivalent <code><a class="el" href="#a7f1e254ff70bf9f7aa7f2c2be4380636">new_extractor()</a></code> overload. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new indexed-access extractor.</dd></dl>
+<p>Subclasses may override this method to return a pointer to a specific <code><a class="el" href="classkmeans_1_1IndexedAccessExtractor.html" title="Extractor for accessing indexed observations.">IndexedAccessExtractor</a></code> subclass. This is used for devirtualization in other <b>kmeans</b> functions. If no override is provided, the relevant <code><a class="el" href="#a7f1e254ff70bf9f7aa7f2c2be4380636">new_extractor()</a></code> overload is called instead. </p>
+
+</div>
+</div>
+<a id="ac8de8e6d9c9b5bd5b54a7c5252d6c857" name="ac8de8e6d9c9b5bd5b54a7c5252d6c857"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8de8e6d9c9b5bd5b54a7c5252d6c857">&#9670;&#160;</a></span>new_known_extractor() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Data_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classkmeans_1_1Matrix.html">kmeans::Matrix</a>&lt; Index_, Data_ &gt;::new_known_extractor </td>
+          <td>(</td>
+          <td class="paramtype">Index_</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Index_</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Start of the contiguous block, see the equivalent <code><a class="el" href="#a7f1e254ff70bf9f7aa7f2c2be4380636">new_extractor()</a></code> overload. </td></tr>
+    <tr><td class="paramname">length</td><td>Length of the contiguous block, see the equivalent <code><a class="el" href="#a7f1e254ff70bf9f7aa7f2c2be4380636">new_extractor()</a></code> overload. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new consecutive-access extractor.</dd></dl>
+<p>Subclasses may override this method to return a pointer to a specific <code><a class="el" href="classkmeans_1_1ConsecutiveAccessExtractor.html" title="Extractor for accessing consecutive observations.">ConsecutiveAccessExtractor</a></code> subclass. This is used for devirtualization in other <b>kmeans</b> functions. If no override is provided, the relevant <code><a class="el" href="#a7f1e254ff70bf9f7aa7f2c2be4380636">new_extractor()</a></code> overload is called instead. </p>
+
 </div>
 </div>
 <a id="a79897537157a5a1fd77ae3026687c615" name="a79897537157a5a1fd77ae3026687c615"></a>
@@ -276,6 +397,8 @@ template&lt;typename Index_ , typename Data_ &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Number of dimensions. </dd></dl>
 
+<p>Implemented in <a class="el" href="classkmeans_1_1SimpleMatrix.html#a1cf5189215727465f7493be66e9d5c29">kmeans::SimpleMatrix&lt; Index_, Data_ &gt;</a>.</p>
+
 </div>
 </div>
 <a id="a906e03e63b05bdca9c98770330db3404" name="a906e03e63b05bdca9c98770330db3404"></a>
@@ -303,6 +426,8 @@ template&lt;typename Index_ , typename Data_ &gt; </div>
 </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Number of observations. </dd></dl>
+
+<p>Implemented in <a class="el" href="classkmeans_1_1SimpleMatrix.html#ab1c29c2d42b55e63a1a5cbe31d7c2aff">kmeans::SimpleMatrix&lt; Index_, Data_ &gt;</a>.</p>
 
 </div>
 </div>

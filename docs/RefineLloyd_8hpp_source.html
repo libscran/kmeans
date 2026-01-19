@@ -162,7 +162,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            index.reset(ndim, ncenters, centers);</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <a class="code hl_function" href="namespacekmeans.html#a554562a5b1c75d7494de4e541a77ca30">parallelize</a>(my_options.<a class="code hl_variable" href="structkmeans_1_1RefineLloydOptions.html#a016c4d237bde819fa8d5c5631c52360b">num_threads</a>, nobs, [&amp;](<span class="keyword">const</span> <span class="keywordtype">int</span> t, <span class="keyword">const</span> Index_ start, <span class="keyword">const</span> Index_ length) -&gt; <span class="keywordtype">void</span> {</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                auto work = data.new_extractor(start, length);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                auto work = data.new_known_extractor(start, length);</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                Index_ num_diff = 0;</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                for (Index_ obs = start, end = start + length; obs &lt; end; ++obs) {</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                    const auto dptr = work-&gt;get_observation();</div>

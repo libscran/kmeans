@@ -151,7 +151,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    std::vector&lt;Float_&gt;&amp; stat_buffer)</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>{</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">const</span> <span class="keyword">auto</span> N = current.size();</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keyword">auto</span> work = data.new_extractor(current.data(), <span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(N)); <span class="comment">// safety of the cast is already checked in InitializeVariancePartition::run(). </span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keyword">auto</span> work = data.new_known_extractor(current.data(), <span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(N)); <span class="comment">// safety of the cast is already checked in InitializeVariancePartition::run(). </span></div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    value_buffer.clear();</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    value_buffer.reserve(N);</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">for</span> (I&lt;<span class="keyword">decltype</span>(N)&gt; i = 0; i &lt; N; ++i) {</div>
@@ -230,7 +230,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>            <span class="keyword">auto</span>&amp; cur_ss = dim_ss[0];</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>            sanisizer::resize(cur_ss, ndim);</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            std::fill_n(centers, ndim, 0);</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>            <span class="keyword">auto</span> matwork = data.new_extractor(<span class="keyword">static_cast&lt;</span>Index_<span class="keyword">&gt;</span>(0), nobs);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>            <span class="keyword">auto</span> matwork = data.new_known_extractor(<span class="keyword">static_cast&lt;</span>Index_<span class="keyword">&gt;</span>(0), nobs);</div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>            <span class="keywordflow">for</span> (I&lt;<span class="keyword">decltype</span>(nobs)&gt; i = 0; i &lt; nobs; ++i) {</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                <span class="keyword">const</span> <span class="keyword">auto</span> dptr = matwork-&gt;get_observation();</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>                InitializeVariancePartition_internal::compute_welford(ndim, dptr, centers, cur_ss.data(), <span class="keyword">static_cast&lt;</span>Float_<span class="keyword">&gt;</span>(i + 1));</div>
@@ -286,7 +286,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>            cur_assignments_copy.clear();</div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>            std::fill_n(cur_center, ndim, 0);</div>
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>            std::fill(cur_ss.begin(), cur_ss.end(), 0);</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>            <span class="keyword">auto</span> work = data.new_extractor(cur_assignments.data(), cur_assignments.size());</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>            <span class="keyword">auto</span> work = data.new_known_extractor(cur_assignments.data(), cur_assignments.size());</div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> i : cur_assignments) {</div>
 <div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>                <span class="keyword">const</span> <span class="keyword">auto</span> dptr = work-&gt;get_observation(); <span class="comment">// make sure this is outside the if(), as it must always be called in each loop iteration to match &#39;cur_assignments&#39; properly.</span></div>

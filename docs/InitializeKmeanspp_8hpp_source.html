@@ -167,13 +167,13 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    sofar.reserve(ncenters);</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    InitializeKmeansppRng eng(seed);</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keyword">auto</span> last_work = data.new_extractor();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keyword">auto</span> last_work = data.new_known_extractor();</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">for</span> (Cluster_ cen = 0; cen &lt; ncenters; ++cen) {</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">if</span> (!sofar.empty()) {</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keyword">const</span> <span class="keyword">auto</span> last_ptr = last_work-&gt;get_observation(sofar.back());</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            parallelize(nthreads, nobs, [&amp;](<span class="keyword">const</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> Index_ start, <span class="keyword">const</span> Index_ length) -&gt; <span class="keywordtype">void</span> {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                <span class="keyword">auto</span> curwork = data.new_extractor(start, length);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                <span class="keyword">auto</span> curwork = data.new_known_extractor(start, length);</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                <span class="keywordflow">for</span> (Index_ obs = start, end = start + length; obs &lt; end; ++obs) {</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                    <span class="keyword">const</span> <span class="keyword">auto</span> current = curwork-&gt;get_observation(); <span class="comment">// make sure this is before the &#39;continue&#39;, as we MUST call this in every loop iteration to fulfill consecutive access.</span></div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>

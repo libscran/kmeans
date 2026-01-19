@@ -132,19 +132,31 @@ Collaboration diagram for kmeans::SimpleMatrix&lt; Index_, Data_ &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a72d6149bbe37c7d300a907dda17568df" id="r_a72d6149bbe37c7d300a907dda17568df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72d6149bbe37c7d300a907dda17568df">SimpleMatrix</a> (const std::size_t <a class="el" href="classkmeans_1_1Matrix.html#a79897537157a5a1fd77ae3026687c615">num_dimensions</a>, const Index_ <a class="el" href="classkmeans_1_1Matrix.html#a906e03e63b05bdca9c98770330db3404">num_observations</a>, const Data_ *const data)</td></tr>
+<tr class="memitem:a72d6149bbe37c7d300a907dda17568df" id="r_a72d6149bbe37c7d300a907dda17568df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72d6149bbe37c7d300a907dda17568df">SimpleMatrix</a> (const std::size_t <a class="el" href="#a1cf5189215727465f7493be66e9d5c29">num_dimensions</a>, const Index_ <a class="el" href="#ab1c29c2d42b55e63a1a5cbe31d7c2aff">num_observations</a>, const Data_ *const data)</td></tr>
 <tr class="separator:a72d6149bbe37c7d300a907dda17568df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1c29c2d42b55e63a1a5cbe31d7c2aff" id="r_ab1c29c2d42b55e63a1a5cbe31d7c2aff"><td class="memItemLeft" align="right" valign="top">Index_&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1c29c2d42b55e63a1a5cbe31d7c2aff">num_observations</a> () const</td></tr>
+<tr class="separator:ab1c29c2d42b55e63a1a5cbe31d7c2aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cf5189215727465f7493be66e9d5c29" id="r_a1cf5189215727465f7493be66e9d5c29"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1cf5189215727465f7493be66e9d5c29">num_dimensions</a> () const</td></tr>
+<tr class="separator:a1cf5189215727465f7493be66e9d5c29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a5568863be124ffa3fa622406b5309c" id="r_a8a5568863be124ffa3fa622406b5309c"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classkmeans_1_1RandomAccessExtractor.html">RandomAccessExtractor</a>&lt; Index_, Data_ &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a5568863be124ffa3fa622406b5309c">new_extractor</a> () const</td></tr>
+<tr class="separator:a8a5568863be124ffa3fa622406b5309c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33e9922a8a8fa81932940d3c8ed18629" id="r_a33e9922a8a8fa81932940d3c8ed18629"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classkmeans_1_1ConsecutiveAccessExtractor.html">ConsecutiveAccessExtractor</a>&lt; Index_, Data_ &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33e9922a8a8fa81932940d3c8ed18629">new_extractor</a> (const Index_ start, const Index_ length) const</td></tr>
+<tr class="separator:a33e9922a8a8fa81932940d3c8ed18629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a473fbebb16c1ff2744fba34121332a26" id="r_a473fbebb16c1ff2744fba34121332a26"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classkmeans_1_1IndexedAccessExtractor.html">IndexedAccessExtractor</a>&lt; Index_, Data_ &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a473fbebb16c1ff2744fba34121332a26">new_extractor</a> (const Index_ *sequence, const std::size_t length) const</td></tr>
+<tr class="separator:a473fbebb16c1ff2744fba34121332a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb33d826f78240e9a4e0f3e4e808a11b" id="r_abb33d826f78240e9a4e0f3e4e808a11b"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb33d826f78240e9a4e0f3e4e808a11b">new_known_extractor</a> () const</td></tr>
+<tr class="separator:abb33d826f78240e9a4e0f3e4e808a11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ffc43106a9fe9c6870de0dd2640719f" id="r_a3ffc43106a9fe9c6870de0dd2640719f"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ffc43106a9fe9c6870de0dd2640719f">new_known_extractor</a> (const Index_ start, const Index_) const</td></tr>
+<tr class="separator:a3ffc43106a9fe9c6870de0dd2640719f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab1630e9e0b77fd418669b202763f75c" id="r_aab1630e9e0b77fd418669b202763f75c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab1630e9e0b77fd418669b202763f75c">new_known_extractor</a> (const Index_ *sequence, const std::size_t) const</td></tr>
+<tr class="separator:aab1630e9e0b77fd418669b202763f75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classkmeans_1_1Matrix"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classkmeans_1_1Matrix')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classkmeans_1_1Matrix.html">kmeans::Matrix&lt; Index_, Data_ &gt;</a></td></tr>
-<tr class="memitem:a906e03e63b05bdca9c98770330db3404 inherit pub_methods_classkmeans_1_1Matrix" id="r_a906e03e63b05bdca9c98770330db3404"><td class="memItemLeft" align="right" valign="top">virtual Index_&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkmeans_1_1Matrix.html#a906e03e63b05bdca9c98770330db3404">num_observations</a> () const =0</td></tr>
-<tr class="separator:a906e03e63b05bdca9c98770330db3404 inherit pub_methods_classkmeans_1_1Matrix"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79897537157a5a1fd77ae3026687c615 inherit pub_methods_classkmeans_1_1Matrix" id="r_a79897537157a5a1fd77ae3026687c615"><td class="memItemLeft" align="right" valign="top">virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkmeans_1_1Matrix.html#a79897537157a5a1fd77ae3026687c615">num_dimensions</a> () const =0</td></tr>
-<tr class="separator:a79897537157a5a1fd77ae3026687c615 inherit pub_methods_classkmeans_1_1Matrix"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f1e254ff70bf9f7aa7f2c2be4380636 inherit pub_methods_classkmeans_1_1Matrix" id="r_a7f1e254ff70bf9f7aa7f2c2be4380636"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classkmeans_1_1RandomAccessExtractor.html">RandomAccessExtractor</a>&lt; Index_, Data_ &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkmeans_1_1Matrix.html#a7f1e254ff70bf9f7aa7f2c2be4380636">new_extractor</a> () const =0</td></tr>
-<tr class="separator:a7f1e254ff70bf9f7aa7f2c2be4380636 inherit pub_methods_classkmeans_1_1Matrix"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7266f580a6b772dd23c42f9d62a077ad inherit pub_methods_classkmeans_1_1Matrix" id="r_a7266f580a6b772dd23c42f9d62a077ad"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classkmeans_1_1ConsecutiveAccessExtractor.html">ConsecutiveAccessExtractor</a>&lt; Index_, Data_ &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkmeans_1_1Matrix.html#a7266f580a6b772dd23c42f9d62a077ad">new_extractor</a> (Index_ start, Index_ length) const =0</td></tr>
-<tr class="separator:a7266f580a6b772dd23c42f9d62a077ad inherit pub_methods_classkmeans_1_1Matrix"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa452b7244735d4db34cc2fbac3ea1591 inherit pub_methods_classkmeans_1_1Matrix" id="r_aa452b7244735d4db34cc2fbac3ea1591"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classkmeans_1_1IndexedAccessExtractor.html">IndexedAccessExtractor</a>&lt; Index_, Data_ &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkmeans_1_1Matrix.html#aa452b7244735d4db34cc2fbac3ea1591">new_extractor</a> (const Index_ *sequence, std::size_t length) const =0</td></tr>
-<tr class="separator:aa452b7244735d4db34cc2fbac3ea1591 inherit pub_methods_classkmeans_1_1Matrix"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08022a8c5a3e174438cf68b7e7dc7bd7 inherit pub_methods_classkmeans_1_1Matrix" id="r_a08022a8c5a3e174438cf68b7e7dc7bd7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkmeans_1_1Matrix.html#a08022a8c5a3e174438cf68b7e7dc7bd7">new_known_extractor</a> () const</td></tr>
+<tr class="separator:a08022a8c5a3e174438cf68b7e7dc7bd7 inherit pub_methods_classkmeans_1_1Matrix"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8de8e6d9c9b5bd5b54a7c5252d6c857 inherit pub_methods_classkmeans_1_1Matrix" id="r_ac8de8e6d9c9b5bd5b54a7c5252d6c857"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkmeans_1_1Matrix.html#ac8de8e6d9c9b5bd5b54a7c5252d6c857">new_known_extractor</a> (Index_ start, Index_ length) const</td></tr>
+<tr class="separator:ac8de8e6d9c9b5bd5b54a7c5252d6c857 inherit pub_methods_classkmeans_1_1Matrix"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb1a607827d65eee70b8b6c4be3ceecc inherit pub_methods_classkmeans_1_1Matrix" id="r_adb1a607827d65eee70b8b6c4be3ceecc"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkmeans_1_1Matrix.html#adb1a607827d65eee70b8b6c4be3ceecc">new_known_extractor</a> (const Index_ *sequence, std::size_t length) const</td></tr>
+<tr class="separator:adb1a607827d65eee70b8b6c4be3ceecc inherit pub_methods_classkmeans_1_1Matrix"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -211,6 +223,271 @@ template&lt;typename Index_ , typename Data_ &gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8a5568863be124ffa3fa622406b5309c" name="a8a5568863be124ffa3fa622406b5309c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a5568863be124ffa3fa622406b5309c">&#9670;&#160;</a></span>new_extractor() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Data_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classkmeans_1_1RandomAccessExtractor.html">RandomAccessExtractor</a>&lt; Index_, Data_ &gt; &gt; <a class="el" href="classkmeans_1_1SimpleMatrix.html">kmeans::SimpleMatrix</a>&lt; Index_, Data_ &gt;::new_extractor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>A new random-access extractor. </dd></dl>
+
+<p>Implements <a class="el" href="classkmeans_1_1Matrix.html#a7f1e254ff70bf9f7aa7f2c2be4380636">kmeans::Matrix&lt; Index_, Data_ &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a473fbebb16c1ff2744fba34121332a26" name="a473fbebb16c1ff2744fba34121332a26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a473fbebb16c1ff2744fba34121332a26">&#9670;&#160;</a></span>new_extractor() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Data_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classkmeans_1_1IndexedAccessExtractor.html">IndexedAccessExtractor</a>&lt; Index_, Data_ &gt; &gt; <a class="el" href="classkmeans_1_1SimpleMatrix.html">kmeans::SimpleMatrix</a>&lt; Index_, Data_ &gt;::new_extractor </td>
+          <td>(</td>
+          <td class="paramtype">const Index_ *</td>          <td class="paramname"><span class="paramname"><em>sequence</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sequence</td><td>Pointer to an array of sorted and unique indices of observations, to be accessed in the provided order. It is assumed that the vector will not be deallocated before the destruction of the returned <code><a class="el" href="classkmeans_1_1IndexedAccessExtractor.html" title="Extractor for accessing indexed observations.">IndexedAccessExtractor</a></code>. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">length</td><td>Number of observations in <code>sequence</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new indexed-access extractor. </dd></dl>
+
+<p>Implements <a class="el" href="classkmeans_1_1Matrix.html#aa452b7244735d4db34cc2fbac3ea1591">kmeans::Matrix&lt; Index_, Data_ &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a33e9922a8a8fa81932940d3c8ed18629" name="a33e9922a8a8fa81932940d3c8ed18629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33e9922a8a8fa81932940d3c8ed18629">&#9670;&#160;</a></span>new_extractor() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Data_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classkmeans_1_1ConsecutiveAccessExtractor.html">ConsecutiveAccessExtractor</a>&lt; Index_, Data_ &gt; &gt; <a class="el" href="classkmeans_1_1SimpleMatrix.html">kmeans::SimpleMatrix</a>&lt; Index_, Data_ &gt;::new_extractor </td>
+          <td>(</td>
+          <td class="paramtype">const Index_</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Index_</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Start of the contiguous block of observations to be accessed consecutively. </td></tr>
+    <tr><td class="paramname">length</td><td>Length of the contiguous block of observations to be accessed consecutively. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new consecutive-access extractor. </dd></dl>
+
+<p>Implements <a class="el" href="classkmeans_1_1Matrix.html#a7266f580a6b772dd23c42f9d62a077ad">kmeans::Matrix&lt; Index_, Data_ &gt;</a>.</p>
+
+</div>
+</div>
+<a id="abb33d826f78240e9a4e0f3e4e808a11b" name="abb33d826f78240e9a4e0f3e4e808a11b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb33d826f78240e9a4e0f3e4e808a11b">&#9670;&#160;</a></span>new_known_extractor() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Data_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classkmeans_1_1SimpleMatrix.html">kmeans::SimpleMatrix</a>&lt; Index_, Data_ &gt;::new_known_extractor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Override to assist devirtualization when creating a <code><a class="el" href="classkmeans_1_1RandomAccessExtractor.html" title="Extractor for accessing random observations.">RandomAccessExtractor</a></code>. </p>
+
+</div>
+</div>
+<a id="aab1630e9e0b77fd418669b202763f75c" name="aab1630e9e0b77fd418669b202763f75c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab1630e9e0b77fd418669b202763f75c">&#9670;&#160;</a></span>new_known_extractor() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Data_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classkmeans_1_1SimpleMatrix.html">kmeans::SimpleMatrix</a>&lt; Index_, Data_ &gt;::new_known_extractor </td>
+          <td>(</td>
+          <td class="paramtype">const Index_ *</td>          <td class="paramname"><span class="paramname"><em>sequence</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::size_t</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Override to assist devirtualization when creating a <code><a class="el" href="classkmeans_1_1IndexedAccessExtractor.html" title="Extractor for accessing indexed observations.">IndexedAccessExtractor</a></code>. </p>
+
+</div>
+</div>
+<a id="a3ffc43106a9fe9c6870de0dd2640719f" name="a3ffc43106a9fe9c6870de0dd2640719f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ffc43106a9fe9c6870de0dd2640719f">&#9670;&#160;</a></span>new_known_extractor() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Data_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classkmeans_1_1SimpleMatrix.html">kmeans::SimpleMatrix</a>&lt; Index_, Data_ &gt;::new_known_extractor </td>
+          <td>(</td>
+          <td class="paramtype">const Index_</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Index_</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Override to assist devirtualization when creating a <code><a class="el" href="classkmeans_1_1ConsecutiveAccessExtractor.html" title="Extractor for accessing consecutive observations.">ConsecutiveAccessExtractor</a></code>. </p>
+
+</div>
+</div>
+<a id="a1cf5189215727465f7493be66e9d5c29" name="a1cf5189215727465f7493be66e9d5c29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cf5189215727465f7493be66e9d5c29">&#9670;&#160;</a></span>num_dimensions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Data_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t <a class="el" href="classkmeans_1_1SimpleMatrix.html">kmeans::SimpleMatrix</a>&lt; Index_, Data_ &gt;::num_dimensions </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Number of dimensions. </dd></dl>
+
+<p>Implements <a class="el" href="classkmeans_1_1Matrix.html#a79897537157a5a1fd77ae3026687c615">kmeans::Matrix&lt; Index_, Data_ &gt;</a>.</p>
+
+</div>
+</div>
+<a id="ab1c29c2d42b55e63a1a5cbe31d7c2aff" name="ab1c29c2d42b55e63a1a5cbe31d7c2aff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1c29c2d42b55e63a1a5cbe31d7c2aff">&#9670;&#160;</a></span>num_observations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Data_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index_ <a class="el" href="classkmeans_1_1SimpleMatrix.html">kmeans::SimpleMatrix</a>&lt; Index_, Data_ &gt;::num_observations </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Number of observations. </dd></dl>
+
+<p>Implements <a class="el" href="classkmeans_1_1Matrix.html#a906e03e63b05bdca9c98770330db3404">kmeans::Matrix&lt; Index_, Data_ &gt;</a>.</p>
 
 </div>
 </div>
