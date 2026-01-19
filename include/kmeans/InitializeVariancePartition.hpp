@@ -80,7 +80,7 @@ Float_ optimize_partition(
      */
 
     const auto N = current.size();
-    auto work = data.new_extractor(current.data(), static_cast<std::size_t>(N)); // safety of the cast is already checked in InitializeVariancePartition::run(). 
+    auto work = data.new_known_extractor(current.data(), static_cast<std::size_t>(N)); // safety of the cast is already checked in InitializeVariancePartition::run(). 
     value_buffer.clear();
     value_buffer.reserve(N);
     for (I<decltype(N)> i = 0; i < N; ++i) {
@@ -209,7 +209,7 @@ public:
             auto& cur_ss = dim_ss[0];
             sanisizer::resize(cur_ss, ndim);
             std::fill_n(centers, ndim, 0);
-            auto matwork = data.new_extractor(static_cast<Index_>(0), nobs);
+            auto matwork = data.new_known_extractor(static_cast<Index_>(0), nobs);
             for (I<decltype(nobs)> i = 0; i < nobs; ++i) {
                 const auto dptr = matwork->get_observation();
                 InitializeVariancePartition_internal::compute_welford(ndim, dptr, centers, cur_ss.data(), static_cast<Float_>(i + 1));
@@ -265,7 +265,7 @@ public:
             cur_assignments_copy.clear();
             std::fill_n(cur_center, ndim, 0);
             std::fill(cur_ss.begin(), cur_ss.end(), 0);
-            auto work = data.new_extractor(cur_assignments.data(), cur_assignments.size());
+            auto work = data.new_known_extractor(cur_assignments.data(), cur_assignments.size());
 
             for (const auto i : cur_assignments) {
                 const auto dptr = work->get_observation(); // make sure this is outside the if(), as it must always be called in each loop iteration to match 'cur_assignments' properly.

@@ -110,7 +110,7 @@ public:
             index.reset(ndim, ncenters, centers);
 
             parallelize(my_options.num_threads, nobs, [&](const int t, const Index_ start, const Index_ length) -> void {
-                auto work = data.new_extractor(start, length);
+                auto work = data.new_known_extractor(start, length);
                 Index_ num_diff = 0;
                 for (Index_ obs = start, end = start + length; obs < end; ++obs) {
                     const auto dptr = work->get_observation();

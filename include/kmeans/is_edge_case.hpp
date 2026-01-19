@@ -39,7 +39,7 @@ Details<Index<Matrix_> > process_edge_case(const Matrix_& data, Cluster_ ncenter
         std::fill_n(sizes.begin(), nobs, 1);
 
         const auto ndim = data.num_dimensions();
-        auto work = data.new_extractor(static_cast<I<decltype(nobs)> >(0), nobs);
+        auto work = data.new_known_extractor(static_cast<I<decltype(nobs)> >(0), nobs);
         for (I<decltype(nobs)> o = 0; o < nobs; ++o) {
             const auto ptr = work->get_observation();
             std::copy_n(ptr, ndim, centers + sanisizer::product_unsafe<std::size_t>(o, ndim));

@@ -244,7 +244,7 @@ void find_closest_two_centers(
 
     const auto nobs = data.num_observations();
     parallelize(nthreads, nobs, [&](const int, const I<decltype(nobs)> start, const I<decltype(nobs)> length) -> void {
-        auto matwork = data.new_extractor(start, length);
+        auto matwork = data.new_known_extractor(start, length);
         for (I<decltype(start)> obs = start, end = start + length; obs < end; ++obs) {
             const auto optr = matwork->get_observation();
             const auto res2 = index.find2(optr);
@@ -312,7 +312,7 @@ bool optimal_transfer(
 {
     const auto nobs = data.num_observations();
     const auto ndim = data.num_dimensions();
-    auto matwork = data.new_extractor();
+    auto matwork = data.new_known_extractor();
 
     for (I<decltype(nobs)> obs = 0; obs < nobs; ++obs) { 
         ++work.optra_steps_since_last_transfer;
@@ -421,7 +421,7 @@ std::pair<bool, bool> quick_transfer(
 
     const auto nobs = data.num_observations();
     const auto ndim = data.num_dimensions();
-    auto matwork = data.new_extractor();
+    auto matwork = data.new_known_extractor();
 
     I<decltype(nobs)> steps_since_last_quick_transfer = 0; // i.e., ICOUN in the original Fortran implementation.
 

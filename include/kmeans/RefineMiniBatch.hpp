@@ -137,7 +137,7 @@ public:
         auto previous = sanisizer::create<std::vector<Cluster_> >(nobs);
 
         const I<decltype(nobs)> actual_batch_size = sanisizer::min(nobs, my_options.batch_size);
-        sanisizer::cast<std::size_t>(actual_batch_size); // check that static_cast for new_extractor() calls will be safe.
+        sanisizer::cast<std::size_t>(actual_batch_size); // check that static_cast for new_known_extractor() calls will be safe.
         auto chosen = sanisizer::create<std::vector<Index_> >(actual_batch_size);
         RefineMiniBatchRng eng(my_options.seed);
 
@@ -155,7 +155,7 @@ public:
 
             index.reset(ndim, ncenters, centers);
             parallelize(my_options.num_threads, actual_batch_size, [&](const int, const Index_ start, const Index_ length) -> void {
-                auto work = data.new_extractor(chosen.data() + start, static_cast<std::size_t>(length));
+                auto work = data.new_known_extractor(chosen.data() + start, static_cast<std::size_t>(length));
                 for (Index_ s = start, end = start + length; s < end; ++s) {
                     const auto ptr = work->get_observation();
                     clusters[chosen[s]] = index.find(ptr);
@@ -163,7 +163,7 @@ public:
             });
 
             // Updating the means for each cluster.
-            auto work = data.new_extractor(chosen.data(), static_cast<std::size_t>(chosen.size()));
+            auto work = data.new_known_extractor(chosen.data(), static_cast<std::size_t>(chosen.size()));
             for (const auto o : chosen) {
                 const auto c = clusters[o];
                 auto& n = total_sampled[c];
@@ -210,7 +210,7 @@ public:
         // Run through all observations to make sure they have the latest cluster assignments.
         index.reset(ndim, ncenters, centers);
         parallelize(my_options.num_threads, nobs, [&](const int, const Index_ start, const Index_ length) -> void {
-            auto work = data.new_extractor(start, length);
+            auto work = data.new_known_extractor(start, length);
             for (Index_ s = start, end = start + length; s < end; ++s) {
                 const auto ptr = work->get_observation();
                 clusters[s] = index.find(ptr);

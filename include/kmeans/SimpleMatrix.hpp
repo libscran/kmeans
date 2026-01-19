@@ -191,9 +191,6 @@ private:
     friend class SimpleMatrixIndexedAccessExtractor<Index_, Data_>;
 
 public:
-    /**
-     * @cond
-     */
     Index_ num_observations() const {
         return my_num_obs;
     }
@@ -204,19 +201,38 @@ public:
 
 public:
     std::unique_ptr<RandomAccessExtractor<Index_, Data_> > new_extractor() const {
+        return new_known_extractor();
+    }
+
+    std::unique_ptr<ConsecutiveAccessExtractor<Index_, Data_> > new_extractor(const Index_ start, const Index_ length) const {
+        return new_known_extractor(start, length);
+    }
+
+    std::unique_ptr<IndexedAccessExtractor<Index_, Data_> > new_extractor(const Index_* sequence, const std::size_t length) const {
+        return new_known_extractor(sequence, length);
+    }
+
+public:
+    /**
+     * Override to assist devirtualization when creating a `RandomAccessExtractor`.
+     */
+    auto new_known_extractor() const {
         return std::make_unique<SimpleMatrixRandomAccessExtractor<Index_, Data_> >(*this);
     }
 
-    std::unique_ptr<ConsecutiveAccessExtractor<Index_, Data_> > new_extractor(const Index_ start, const Index_) const {
+    /**
+     * Override to assist devirtualization when creating a `ConsecutiveAccessExtractor`.
+     */
+    auto new_known_extractor(const Index_ start, const Index_) const {
         return std::make_unique<SimpleMatrixConsecutiveAccessExtractor<Index_, Data_> >(*this, start);
     }
 
-    std::unique_ptr<IndexedAccessExtractor<Index_, Data_> > new_extractor(const Index_* sequence, const std::size_t) const {
+    /**
+     * Override to assist devirtualization when creating a `IndexedAccessExtractor`.
+     */
+    auto new_known_extractor(const Index_* sequence, const std::size_t) const {
         return std::make_unique<SimpleMatrixIndexedAccessExtractor<Index_, Data_> >(*this, sequence);
     }
-    /**
-     * @endcond
-     */
 };
 
 }

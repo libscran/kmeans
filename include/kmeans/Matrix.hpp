@@ -185,6 +185,44 @@ public:
      * @return A new indexed-access extractor.
      */
     virtual std::unique_ptr<IndexedAccessExtractor<Index_, Data_> > new_extractor(const Index_* sequence, std::size_t length) const = 0;
+
+public:
+    /**
+     * @return A new random-access extractor.
+     *
+     * Subclasses may override this method to return a pointer to a specific `RandomAccessExtractor` subclass.
+     * This is used for devirtualization in other **kmeans** functions. 
+     * If no override is provided, `new_extractor()` is called instead.
+     */
+    auto new_known_extractor() const {
+        return new_extractor();
+    }
+
+    /**
+     * @param start Start of the contiguous block, see the equivalent `new_extractor()` overload.
+     * @param length Length of the contiguous block, see the equivalent `new_extractor()` overload.
+     * @return A new consecutive-access extractor.
+     *
+     * Subclasses may override this method to return a pointer to a specific `ConsecutiveAccessExtractor` subclass.
+     * This is used for devirtualization in other **kmeans** functions. 
+     * If no override is provided, the relevant `new_extractor()` overload is called instead.
+     */
+    auto new_known_extractor(Index_ start, Index_ length) const {
+        return new_extractor(start, length);
+    }
+
+    /**
+     * @param sequence Pointer to a sorted and unique array of observations, see the equivalent `new_extractor()` overload.
+     * @param length Length of the array, see the equivalent `new_extractor()` overload.
+     * @return A new indexed-access extractor.
+     *
+     * Subclasses may override this method to return a pointer to a specific `IndexedAccessExtractor` subclass.
+     * This is used for devirtualization in other **kmeans** functions. 
+     * If no override is provided, the relevant `new_extractor()` overload is called instead.
+     */
+    auto new_known_extractor(const Index_* sequence, std::size_t length) const {
+        return new_extractor(sequence, length);
+    }
 };
 
 /**

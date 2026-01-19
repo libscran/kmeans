@@ -85,13 +85,13 @@ std::vector<Index_> run_kmeanspp(const Matrix_& data, Cluster_ ncenters, const t
     sofar.reserve(ncenters);
     InitializeKmeansppRng eng(seed);
 
-    auto last_work = data.new_extractor();
+    auto last_work = data.new_known_extractor();
     for (Cluster_ cen = 0; cen < ncenters; ++cen) {
         if (!sofar.empty()) {
             const auto last_ptr = last_work->get_observation(sofar.back());
 
             parallelize(nthreads, nobs, [&](const int, const Index_ start, const Index_ length) -> void {
-                auto curwork = data.new_extractor(start, length);
+                auto curwork = data.new_known_extractor(start, length);
                 for (Index_ obs = start, end = start + length; obs < end; ++obs) {
                     const auto current = curwork->get_observation(); // make sure this is before the 'continue', as we MUST call this in every loop iteration to fulfill consecutive access.
 

@@ -20,7 +20,7 @@ void compute_centroid(const Matrix_& data, Float_* const center) {
     const auto nobs = data.num_observations();
     std::fill_n(center, ndim, 0);
 
-    auto work = data.new_extractor(static_cast<I<decltype(nobs)> >(0), nobs);
+    auto work = data.new_known_extractor(static_cast<I<decltype(nobs)> >(0), nobs);
     for (I<decltype(nobs)> i = 0; i < nobs; ++i) {
         const auto dptr = work->get_observation();
         for (I<decltype(ndim)> d = 0; d < ndim; ++d) {
@@ -39,7 +39,7 @@ void compute_centroids(const Matrix_& data, const Cluster_ ncenters, Float_* con
     const auto ndim = data.num_dimensions();
     std::fill_n(centers, sanisizer::product_unsafe<std::size_t>(ndim, ncenters), 0);
 
-    auto work = data.new_extractor(static_cast<I<decltype(nobs)> >(0), nobs);
+    auto work = data.new_known_extractor(static_cast<I<decltype(nobs)> >(0), nobs);
     for (I<decltype(nobs)> obs = 0; obs < nobs; ++obs) {
         const auto curclust = clusters[obs];
         const auto mine = work->get_observation();
