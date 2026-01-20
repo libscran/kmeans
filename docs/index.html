@@ -97,12 +97,12 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2github_2workspace_2README"></a></p>
-<p><img src="https://github.com/libscran/kmeans/actions/workflows/run-tests.yaml/badge.svg" alt="Unit tests" style="pointer-events: none;" class="inline"/> <img src="https://github.com/libscran/kmeans/actions/workflows/doxygenate.yaml/badge.svg" alt="Documentation" style="pointer-events: none;" class="inline"/> <img src="https://github.com/libscran/kmeans/actions/workflows/compare-kmeans.yaml/badge.svg" alt="stats comparison" style="pointer-events: none;" class="inline"/> <a href="https://codecov.io/gh/libscran/kmeans"><img src="https://codecov.io/gh/libscran/kmeans/branch/master/graph/badge.svg?token=7S231XHC0Q" alt="Codecov" style="pointer-events: none;" class="inline"/></a></p>
+<p><img src="https://github.com/libscran/kmeans/actions/workflows/run-tests.yaml/badge.svg" alt="Unit tests" style="pointer-events: none;" class="inline"/> <img src="https://github.com/libscran/kmeans/actions/workflows/doxygenate.yaml/badge.svg" alt="Documentation" style="pointer-events: none;" class="inline"/> <img src="https://github.com/libscran/kmeans/actions/workflows/compare-kmeans.yaml/badge.svg" alt="stats comparison" style="pointer-events: none;" class="inline"/> <a href="https://codecov.io/gh/libscran/kmeans"><img src="https://codecov.io/gh/libscran/kmeans/branch/master/graph/badge.svg?token=h9W07tZYFT" alt="Codecov" style="pointer-events: none;" class="inline"/></a></p>
 <h1>Overview</h1>
 <p>This repository contains a header-only C++ library for k-means clustering. Initialization can be performed with user-supplied centers, random selection of points, weighted sampling with kmeans++ (Arthur and Vassilvitskii, 2007) or variance partitioning (Su and Dy, 2007). Refinement can be performed using the Hartigan-Wong method, Lloyd's algorithm or a custom mini-batch implementation. The Hartigan-Wong implementation is derived from the Fortran code in the R <b>stats</b> package, heavily refactored for more idiomatic C++.</p>
 <h1>Quick start</h1>
 <p><b>kmeans</b> is a header-only library, so it can be easily used by just <code>#include</code>ing the relevant source files and running <code>compute()</code>:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;kmeans/Kmeans.hpp&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kmeans_8hpp.html">kmeans/kmeans.hpp</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> ndim = 5;</div>
 <div class="line"><span class="keywordtype">int</span> nobs = 1000;</div>
@@ -139,6 +139,7 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclasskmeans_1_1InitializeKmeanspp_html"><div class="ttname"><a href="classkmeans_1_1InitializeKmeanspp.html">kmeans::InitializeKmeanspp</a></div><div class="ttdoc">k-means++ initialization of Arthur and Vassilvitskii (2007).</div><div class="ttdef"><b>Definition</b> InitializeKmeanspp.hpp:159</div></div>
 <div class="ttc" id="aclasskmeans_1_1RefineLloyd_html"><div class="ttname"><a href="classkmeans_1_1RefineLloyd.html">kmeans::RefineLloyd</a></div><div class="ttdoc">Implements the Lloyd algorithm for k-means clustering.</div><div class="ttdef"><b>Definition</b> RefineLloyd.hpp:67</div></div>
 <div class="ttc" id="aclasskmeans_1_1SimpleMatrix_html"><div class="ttname"><a href="classkmeans_1_1SimpleMatrix.html">kmeans::SimpleMatrix</a></div><div class="ttdoc">A simple matrix of observations.</div><div class="ttdef"><b>Definition</b> SimpleMatrix.hpp:174</div></div>
+<div class="ttc" id="akmeans_8hpp_html"><div class="ttname"><a href="kmeans_8hpp.html">kmeans.hpp</a></div><div class="ttdoc">Perform k-means clustering.</div></div>
 <div class="ttc" id="anamespacekmeans_html_a46d49b7746f7d2e0b6f50ec799e0010d"><div class="ttname"><a href="namespacekmeans.html#a46d49b7746f7d2e0b6f50ec799e0010d">kmeans::compute</a></div><div class="ttdeci">Details&lt; Index_ &gt; compute(const Matrix_ &amp;data, const Initialize&lt; Index_, Data_, Cluster_, Float_, Matrix_ &gt; &amp;initialize, const Refine&lt; Index_, Data_, Cluster_, Float_, Matrix_ &gt; &amp;refine, Cluster_ num_centers, Float_ *centers, Cluster_ *clusters)</div><div class="ttdef"><b>Definition</b> kmeans.hpp:59</div></div>
 </div><!-- fragment --><p>See the <a href="https://libscran.github.io/kmeans">reference documentation</a> for more details.</p>
 <h1>Changing parameters</h1>
@@ -196,7 +197,7 @@ $(function(){ initResizable(false); });
 <div class="line">    <span class="comment">/* If our input data has too many observations to fit into an &#39;int&#39;, we</span></div>
 <div class="line"><span class="comment">     * might need to use a &#39;size_t&#39; instead.</span></div>
 <div class="line"><span class="comment">     */</span></div>
-<div class="line">    size_t,</div>
+<div class="line">    std::size_t,</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* Perhaps our input data is in single-precision floating point to save</span></div>
 <div class="line"><span class="comment">     * space and to speed up processing.</span></div>
@@ -206,7 +207,7 @@ $(function(){ initResizable(false); });
 <div class="line">    <span class="comment">/* If we know that we will never ask for more than 255 clusters, we can use</span></div>
 <div class="line"><span class="comment">     * a smaller integer for the cluster IDs to save space.</span></div>
 <div class="line"><span class="comment">     */</span></div>
-<div class="line">    uint8_t, </div>
+<div class="line">    std::uint8_t, </div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">/* We still want our centroids and distances to be computed in high</span></div>
 <div class="line"><span class="comment">     * precision, even though the input data is only single precision.</span></div>
