@@ -3,7 +3,7 @@
 ![Unit tests](https://github.com/libscran/kmeans/actions/workflows/run-tests.yaml/badge.svg)
 ![Documentation](https://github.com/libscran/kmeans/actions/workflows/doxygenate.yaml/badge.svg)
 ![stats comparison](https://github.com/libscran/kmeans/actions/workflows/compare-kmeans.yaml/badge.svg)
-[![Codecov](https://codecov.io/gh/libscran/kmeans/branch/master/graph/badge.svg?token=7S231XHC0Q)](https://codecov.io/gh/libscran/kmeans)
+[![Codecov](https://codecov.io/gh/libscran/kmeans/branch/master/graph/badge.svg?token=h9W07tZYFT)](https://codecov.io/gh/libscran/kmeans)
 
 ## Overview
 
@@ -17,7 +17,7 @@ The Hartigan-Wong implementation is derived from the Fortran code in the R **sta
 **kmeans** is a header-only library, so it can be easily used by just `#include`ing the relevant source files and running `compute()`:
 
 ```cpp
-#include "kmeans/Kmeans.hpp"
+#include "kmeans/kmeans.hpp"
 
 int ndim = 5;
 int nobs = 1000;
@@ -112,7 +112,7 @@ kmeans::InitializeKmeanspp<
     /* If our input data has too many observations to fit into an 'int', we
      * might need to use a 'size_t' instead.
      */
-    size_t,
+    std::size_t,
 
     /* Perhaps our input data is in single-precision floating point to save
      * space and to speed up processing.
@@ -122,7 +122,7 @@ kmeans::InitializeKmeanspp<
     /* If we know that we will never ask for more than 255 clusters, we can use
      * a smaller integer for the cluster IDs to save space.
      */
-    uint8_t, 
+    std::uint8_t, 
 
     /* We still want our centroids and distances to be computed in high
      * precision, even though the input data is only single precision.
