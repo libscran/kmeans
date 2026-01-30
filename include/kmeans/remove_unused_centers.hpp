@@ -36,10 +36,11 @@ namespace kmeans {
  * On input, this should contain a column-major matrix where rows correspond to dimensions and columns correspond to cluster centers,
  * i.e., the `j`-th column defines the centroid for cluster `j`, which may be present in `clusters`.
  * On output, the columns are rearranged to match the remapped indices in `clusters`.
- * Empty clusters are assigned all-zero coordinates.
+ * Coordinates for empty clusters are left in an arbitrary state.
  * @param sizes Vector of length equal to `num_centers`, containing the number of observations in each cluster.
  * On input, the `j`-th value should be equal to the frequency of cluster `j` in `clusters`, typically from `Details::sizes`.
- * On output, the values may be rearranged to match the remapped indices in `clusters`.
+ * On output, the values are rearranged to match the remapped indices in `clusters`.
+ * Sizes for empty clusters are left in an arbitrary state.
  *
  * @return Number of non-empty clusters.
  * If this is equal to `num_centers`, this function is a no-op.
@@ -81,17 +82,59 @@ Cluster_ remove_unused_centers(
         }
     }
 
-    // Zeroing the leftovers, just in case.
-    std::fill(sizes.begin() + remaining, sizes.end(), 0);
-    std::fill(
-        centers + sanisizer::product_unsafe<std::size_t>(remaining, num_dimensions),
-        centers + sanisizer::product_unsafe<std::size_t>(num_centers, num_dimensions),
-        0
-    );
-
     for (Index_ o = 0; o < num_observations; ++o) {
         clusters[o] = remapping[clusters[o]];
     }
+
+    return remaining;
+}
+
+/**
+ * Overload of `remove_unused_clusters()` where, for all empty clusters, centroids are set to `fill` and sizes are set to zero.
+ *
+ * @tparam Index_ Integer type of the observation indices.
+ * @tparam Cluster_ Integer type of the cluster assignments.
+ * @tparam Float_ Floating-point type of the centroids.
+ *
+ * @param num_dimensions Number of dimensions.
+ * @param num_observations Number of observations.
+ * @param[in,out] clusters Pointer to an array of length `num_observations`.
+ * On input, `clusters[i]` should contain the index of the cluster assigned to observation `i`, typically from `Refine::run()`.
+ * On output, `clusters[i]` contains a possibly-remapped index that will be less than the number of non-empty clusters (returned by this function).
+ * @param num_centers Number of cluster centers.
+ * @param[in,out] centers Pointer to an array of length equal to the product of `num_dimensions` and `num_centers`.
+ * On input, this should contain a column-major matrix where rows correspond to dimensions and columns correspond to cluster centers,
+ * i.e., the `j`-th column defines the centroid for cluster `j`, which may be present in `clusters`.
+ * On output, the columns are rearranged to match the remapped indices in `clusters`.
+ * Coordinates for empty clusters are set to `fill`.
+ * @param sizes Vector of length equal to `num_centers`, containing the number of observations in each cluster.
+ * On input, the `j`-th value should be equal to the frequency of cluster `j` in `clusters`, typically from `Details::sizes`.
+ * On output, the values are rearranged to match the remapped indices in `clusters`.
+ * Sizes for empty clusters are set to zero.
+ * @param fill Fill value for the centers of unused clusters.
+ *
+ * @return Number of non-empty clusters, see `remove
+ * If this is equal to `num_centers`, this function is a no-op.
+ */
+template<typename Index_, typename Cluster_, typename Float_>
+Cluster_ remove_unused_centers(
+    const std::size_t num_dimensions,
+    const Index_ num_observations,
+    Cluster_* const clusters,
+    const Cluster_ num_centers,
+    Float_* const centers,
+    std::vector<Index_>& sizes,
+    Float_ fill
+) {
+    const auto remaining = remove_unused_centers(num_dimensions, num_observations, clusters, num_centers, centers, sizes);
+
+    std::fill(sizes.begin() + remaining, sizes.end(), 0);
+
+    std::fill(
+        centers + sanisizer::product_unsafe<std::size_t>(remaining, num_dimensions),
+        centers + sanisizer::product_unsafe<std::size_t>(num_centers, num_dimensions),
+        fill
+    );
 
     return remaining;
 }

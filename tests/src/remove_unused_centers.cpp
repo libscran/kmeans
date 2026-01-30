@@ -50,7 +50,7 @@ TEST(RemoveUnusedCenters, Removed) {
     true_centers.resize(centers.size());
 
     const int num_obs = clusters.size();
-    const auto out = kmeans::remove_unused_centers(num_dim, num_obs, clusters.data(), num_cen, centers.data(), sizes);
+    const auto out = kmeans::remove_unused_centers(num_dim, num_obs, clusters.data(), num_cen, centers.data(), sizes, 0.0);
 
     EXPECT_EQ(out, 4);
     EXPECT_EQ(sizes, true_sizes);
