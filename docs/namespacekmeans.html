@@ -205,6 +205,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac3a9ad73447e8295259736b22a294b00" id="r_ac3a9ad73447e8295259736b22a294b00"><td class="memTemplParams" colspan="2">template&lt;typename Index_ , typename Cluster_ , typename Float_ &gt; </td></tr>
 <tr class="memitem:ac3a9ad73447e8295259736b22a294b00"><td class="memTemplItemLeft" align="right" valign="top">Cluster_&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac3a9ad73447e8295259736b22a294b00">remove_unused_centers</a> (const std::size_t num_dimensions, const Index_ num_observations, Cluster_ *const clusters, const Cluster_ num_centers, Float_ *const centers, std::vector&lt; Index_ &gt; &amp;sizes)</td></tr>
 <tr class="separator:ac3a9ad73447e8295259736b22a294b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6146ee390649193e39cf219e025d608a" id="r_a6146ee390649193e39cf219e025d608a"><td class="memTemplParams" colspan="2">template&lt;typename Index_ , typename Cluster_ , typename Float_ &gt; </td></tr>
+<tr class="memitem:a6146ee390649193e39cf219e025d608a"><td class="memTemplItemLeft" align="right" valign="top">Cluster_&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6146ee390649193e39cf219e025d608a">remove_unused_centers</a> (const std::size_t num_dimensions, const Index_ num_observations, Cluster_ *const clusters, const Cluster_ num_centers, Float_ *const centers, std::vector&lt; Index_ &gt; &amp;sizes, Float_ fill)</td></tr>
+<tr class="separator:a6146ee390649193e39cf219e025d608a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Perform k-means clustering. </p>
@@ -593,7 +596,7 @@ template&lt;typename Task_ , class Run_ &gt; </div>
 </div>
 </div>
 <a id="ac3a9ad73447e8295259736b22a294b00" name="ac3a9ad73447e8295259736b22a294b00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3a9ad73447e8295259736b22a294b00">&#9670;&#160;</a></span>remove_unused_centers()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3a9ad73447e8295259736b22a294b00">&#9670;&#160;</a></span>remove_unused_centers() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -647,12 +650,81 @@ template&lt;typename Index_ , typename Cluster_ , typename Float_ &gt; </div>
     <tr><td class="paramdir"></td><td class="paramname">num_observations</td><td>Number of observations. </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">clusters</td><td>Pointer to an array of length <code>num_observations</code>. On input, <code>clusters[i]</code> should contain the index of the cluster assigned to observation <code>i</code>, typically from <code><a class="el" href="classkmeans_1_1Refine.html#a0ff0875ef8cd5b726098ecb1038258b0">Refine::run()</a></code>. On output, <code>clusters[i]</code> contains a possibly-remapped index that will be less than the number of non-empty clusters (returned by this function). </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">num_centers</td><td>Number of cluster centers. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">centers</td><td>Pointer to an array of length equal to the product of <code>num_dimensions</code> and <code>num_centers</code>. On input, this should contain a column-major matrix where rows correspond to dimensions and columns correspond to cluster centers, i.e., the <code>j</code>-th column defines the centroid for cluster <code>j</code>, which may be present in <code>clusters</code>. On output, the columns are rearranged to match the remapped indices in <code>clusters</code>. Empty clusters are assigned all-zero coordinates. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">sizes</td><td>Vector of length equal to <code>num_centers</code>, containing the number of observations in each cluster. On input, the <code>j</code>-th value should be equal to the frequency of cluster <code>j</code> in <code>clusters</code>, typically from <code><a class="el" href="structkmeans_1_1Details.html#a4be54a935f902c228f0136875dad36be">Details::sizes</a></code>. On output, the values may be rearranged to match the remapped indices in <code>clusters</code>.</td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">centers</td><td>Pointer to an array of length equal to the product of <code>num_dimensions</code> and <code>num_centers</code>. On input, this should contain a column-major matrix where rows correspond to dimensions and columns correspond to cluster centers, i.e., the <code>j</code>-th column defines the centroid for cluster <code>j</code>, which may be present in <code>clusters</code>. On output, the columns are rearranged to match the remapped indices in <code>clusters</code>. Coordinates for empty clusters are left in an arbitrary state. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sizes</td><td>Vector of length equal to <code>num_centers</code>, containing the number of observations in each cluster. On input, the <code>j</code>-th value should be equal to the frequency of cluster <code>j</code> in <code>clusters</code>, typically from <code><a class="el" href="structkmeans_1_1Details.html#a4be54a935f902c228f0136875dad36be">Details::sizes</a></code>. On output, the values are rearranged to match the remapped indices in <code>clusters</code>. Sizes for empty clusters are left in an arbitrary state.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of non-empty clusters. If this is equal to <code>num_centers</code>, this function is a no-op. </dd></dl>
+
+</div>
+</div>
+<a id="a6146ee390649193e39cf219e025d608a" name="a6146ee390649193e39cf219e025d608a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6146ee390649193e39cf219e025d608a">&#9670;&#160;</a></span>remove_unused_centers() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Index_ , typename Cluster_ , typename Float_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Cluster_ kmeans::remove_unused_centers </td>
+          <td>(</td>
+          <td class="paramtype">const std::size_t</td>          <td class="paramname"><span class="paramname"><em>num_dimensions</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Index_</td>          <td class="paramname"><span class="paramname"><em>num_observations</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Cluster_ *const</td>          <td class="paramname"><span class="paramname"><em>clusters</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Cluster_</td>          <td class="paramname"><span class="paramname"><em>num_centers</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Float_ *const</td>          <td class="paramname"><span class="paramname"><em>centers</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Index_ &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>sizes</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Float_</td>          <td class="paramname"><span class="paramname"><em>fill</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Overload of <code>remove_unused_clusters()</code> where, for all empty clusters, centroids are set to <code>fill</code> and sizes are set to zero.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Index_</td><td>Integer type of the observation indices. </td></tr>
+    <tr><td class="paramname">Cluster_</td><td>Integer type of the cluster assignments. </td></tr>
+    <tr><td class="paramname">Float_</td><td>Floating-point type of the centroids.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">num_dimensions</td><td>Number of dimensions. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">num_observations</td><td>Number of observations. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">clusters</td><td>Pointer to an array of length <code>num_observations</code>. On input, <code>clusters[i]</code> should contain the index of the cluster assigned to observation <code>i</code>, typically from <code><a class="el" href="classkmeans_1_1Refine.html#a0ff0875ef8cd5b726098ecb1038258b0">Refine::run()</a></code>. On output, <code>clusters[i]</code> contains a possibly-remapped index that will be less than the number of non-empty clusters (returned by this function). </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">num_centers</td><td>Number of cluster centers. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">centers</td><td>Pointer to an array of length equal to the product of <code>num_dimensions</code> and <code>num_centers</code>. On input, this should contain a column-major matrix where rows correspond to dimensions and columns correspond to cluster centers, i.e., the <code>j</code>-th column defines the centroid for cluster <code>j</code>, which may be present in <code>clusters</code>. On output, the columns are rearranged to match the remapped indices in <code>clusters</code>. Coordinates for empty clusters are set to <code>fill</code>. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sizes</td><td>Vector of length equal to <code>num_centers</code>, containing the number of observations in each cluster. On input, the <code>j</code>-th value should be equal to the frequency of cluster <code>j</code> in <code>clusters</code>, typically from <code><a class="el" href="structkmeans_1_1Details.html#a4be54a935f902c228f0136875dad36be">Details::sizes</a></code>. On output, the values are rearranged to match the remapped indices in <code>clusters</code>. Sizes for empty clusters are set to zero.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of non-empty clusters, see <code>remove If this is equal to</code>num_centers`, this function is a no-op. </dd></dl>
 
 </div>
 </div>

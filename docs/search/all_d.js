@@ -15,7 +15,7 @@ var searchData=
   ['refineminibatch_2ehpp_12',['RefineMiniBatch.hpp',['../RefineMiniBatch_8hpp.html',1,'']]],
   ['refineminibatchoptions_13',['RefineMiniBatchOptions',['../structkmeans_1_1RefineMiniBatchOptions.html',1,'kmeans']]],
   ['refineminibatchrng_14',['RefineMiniBatchRng',['../namespacekmeans.html#a480ae91f76100f985f2a8e9167643312',1,'kmeans']]],
-  ['remove_5funused_5fcenters_15',['remove_unused_centers',['../namespacekmeans.html#ac3a9ad73447e8295259736b22a294b00',1,'kmeans']]],
+  ['remove_5funused_5fcenters_15',['remove_unused_centers',['../namespacekmeans.html#ac3a9ad73447e8295259736b22a294b00',1,'kmeans::remove_unused_centers(const std::size_t num_dimensions, const Index_ num_observations, Cluster_ *const clusters, const Cluster_ num_centers, Float_ *const centers, std::vector&lt; Index_ &gt; &amp;sizes)'],['../namespacekmeans.html#a6146ee390649193e39cf219e025d608a',1,'kmeans::remove_unused_centers(const std::size_t num_dimensions, const Index_ num_observations, Cluster_ *const clusters, const Cluster_ num_centers, Float_ *const centers, std::vector&lt; Index_ &gt; &amp;sizes, Float_ fill)']]],
   ['remove_5funused_5fcenters_2ehpp_16',['remove_unused_centers.hpp',['../remove__unused__centers_8hpp.html',1,'']]],
   ['results_17',['Results',['../structkmeans_1_1Results.html',1,'kmeans']]],
   ['run_18',['run',['../classkmeans_1_1Initialize.html#a6a91bd58a95b69a775b70b7c526d3158',1,'kmeans::Initialize::run()'],['../classkmeans_1_1Refine.html#a0ff0875ef8cd5b726098ecb1038258b0',1,'kmeans::Refine::run()']]]

@@ -843,6 +843,13 @@
       <anchor>ac3a9ad73447e8295259736b22a294b00</anchor>
       <arglist>(const std::size_t num_dimensions, const Index_ num_observations, Cluster_ *const clusters, const Cluster_ num_centers, Float_ *const centers, std::vector&lt; Index_ &gt; &amp;sizes)</arglist>
     </member>
+    <member kind="function">
+      <type>Cluster_</type>
+      <name>remove_unused_centers</name>
+      <anchorfile>namespacekmeans.html</anchorfile>
+      <anchor>a6146ee390649193e39cf219e025d608a</anchor>
+      <arglist>(const std::size_t num_dimensions, const Index_ num_observations, Cluster_ *const clusters, const Cluster_ num_centers, Float_ *const centers, std::vector&lt; Index_ &gt; &amp;sizes, Float_ fill)</arglist>
+    </member>
   </compound>
   <compound kind="page">
     <name>index</name>
