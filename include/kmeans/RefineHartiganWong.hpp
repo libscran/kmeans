@@ -240,16 +240,18 @@ void find_closest_two_centers(
 
     // We assume that there are at least two centers here, otherwise we should
     // have detected that this was an edge case in RefineHartiganWong::run.
-    const internal::QuickSearch<Float_, Cluster_> index(ndim, ncenters, centers);
+    internal::QuickSearch<Float_, Cluster_> index(ndim, ncenters);
+    index.reset(centers);
 
     const auto nobs = data.num_observations();
     parallelize(nthreads, nobs, [&](const int, const I<decltype(nobs)> start, const I<decltype(nobs)> length) -> void {
         auto matwork = data.new_known_extractor(start, length);
+        auto qswork = index.new_workspace();
         for (I<decltype(start)> obs = start, end = start + length; obs < end; ++obs) {
             const auto optr = matwork->get_observation();
-            const auto res2 = index.find2(optr);
-            best_cluster[obs] = res2.first;
-            best_destination_cluster[obs] = res2.second;
+            const auto res2 = index.find2(optr, qswork);
+            best_cluster[obs] = res2[0];
+            best_destination_cluster[obs] = res2[1];
         }
     });
 }

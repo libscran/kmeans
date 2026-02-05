@@ -142,7 +142,7 @@ public:
         RefineMiniBatchRng eng(my_options.seed);
 
         const auto ndim = data.num_dimensions();
-        internal::QuickSearch<Float_, Cluster_> index;
+        internal::QuickSearch<Float_, Cluster_> index(ndim, ncenters);
 
         I<decltype(my_options.max_iterations)> iter = 0;
         for (; iter < my_options.max_iterations; ++iter) {
@@ -153,12 +153,13 @@ public:
                 }
             }
 
-            index.reset(ndim, ncenters, centers);
+            index.reset(centers);
             parallelize(my_options.num_threads, actual_batch_size, [&](const int, const Index_ start, const Index_ length) -> void {
-                auto work = data.new_known_extractor(chosen.data() + start, static_cast<std::size_t>(length));
+                auto matwork = data.new_known_extractor(chosen.data() + start, static_cast<std::size_t>(length));
+                auto qswork = index.new_workspace();
                 for (Index_ s = start, end = start + length; s < end; ++s) {
-                    const auto ptr = work->get_observation();
-                    clusters[chosen[s]] = index.find(ptr);
+                    const auto ptr = matwork->get_observation();
+                    clusters[chosen[s]] = index.find(ptr, qswork);
                 }
             });
 
@@ -208,12 +209,13 @@ public:
         }
 
         // Run through all observations to make sure they have the latest cluster assignments.
-        index.reset(ndim, ncenters, centers);
+        index.reset(centers);
         parallelize(my_options.num_threads, nobs, [&](const int, const Index_ start, const Index_ length) -> void {
-            auto work = data.new_known_extractor(start, length);
+            auto matwork = data.new_known_extractor(start, length);
+            auto qswork = index.new_workspace();
             for (Index_ s = start, end = start + length; s < end; ++s) {
-                const auto ptr = work->get_observation();
-                clusters[s] = index.find(ptr);
+                const auto ptr = matwork->get_observation();
+                clusters[s] = index.find(ptr, qswork);
             }
         });
 
