@@ -74,12 +74,14 @@ public:
     }
 
     void build(const Float_* coords) {
+        sanisizer::reserve(my_items, my_pts);
         my_items.clear();
         for (Index_ i = 0; i < my_pts; ++i) {
             my_items.emplace_back(0, i);
         }
 
         // Nodes are already reserved ahead of time to avoid allocations that could invalidate pointers.
+        sanisizer::reserve(my_nodes, my_pts);
         my_nodes.clear();
 
         // We're assuming that lower < upper at each loop. This requires some protection at the call site when nobs = 0, see the constructor.
@@ -167,10 +169,8 @@ public:
             const typename std::make_unsigned<typename Engine::result_type>::type base = 1234567890, m1 = my_pts, m2 = my_dim;
             return base * m1 +  m2;
         }()),
-        my_data(sanisizer::product<sanisizer::EffectiveSizeType<I<decltype(my_data)> > >(my_dim, my_pts))
+        my_data(sanisizer::product<I<decltype(my_data.size())> >(my_dim, my_pts))
     {
-        sanisizer::reserve(my_items, my_pts);
-        sanisizer::reserve(my_nodes, my_pts);
     }
 
     void reset(const Float_* const data) {
