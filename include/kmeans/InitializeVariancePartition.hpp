@@ -112,7 +112,6 @@ Float_ optimize_partition(
         ++count;
     }
 
-    // iterator arithmetic is safe as we checked can_ptrdiff() in InitializeVariancePartition::run().
     const auto sbBegin = stat_buffer.begin(); 
     const I<decltype(value_buffer.size())> which_min = std::min_element(sbBegin, stat_buffer.end()) - sbBegin;
 
@@ -232,10 +231,6 @@ public:
         std::vector<Index_> cur_assignments_copy;
         std::vector<Float_> opt_partition_values, opt_partition_stats;
 
-        // Checking that iterator arithmetic won't overflow the vector's ptrdiff type.
-        sanisizer::can_ptrdiff<I<decltype(opt_partition_values.begin())> >(nobs);
-        sanisizer::can_ptrdiff<I<decltype(dim_ss.front().begin())> >(ndim);
-
         for (Cluster_ cluster = 1; cluster < ncenters; ++cluster) {
             const auto chosen = highest.top();
             if (chosen.first == 0) {
@@ -247,7 +242,6 @@ public:
             auto& cur_ss = dim_ss[chosen.second];
             auto& cur_assignments = assignments[chosen.second];
 
-            // Iterator arithmetic is safe as we checked can_ptrdiff outside the loop.
             const I<decltype(ndim)> top_dim = std::max_element(cur_ss.begin(), cur_ss.end()) - cur_ss.begin();
             Float_ partition_boundary;
             if (my_options.optimize_partition) {

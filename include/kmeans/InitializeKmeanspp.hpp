@@ -77,9 +77,7 @@ std::vector<Index_> run_kmeanspp(const Matrix_& data, Cluster_ ncenters, const t
     const auto nobs = data.num_observations();
     const auto ndim = data.num_dimensions();
     auto mindist = sanisizer::create<std::vector<Float_> >(nobs, 1);
-
     auto cumulative = sanisizer::create<std::vector<Float_> >(nobs);
-    sanisizer::can_ptrdiff<I<decltype(cumulative.begin())> >(nobs); // check that we can compute a ptrdiff for weighted_sample().
 
     std::vector<Index_> sofar;
     sofar.reserve(ncenters);
