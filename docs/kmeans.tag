@@ -830,10 +830,10 @@
       <arglist>(const Matrix&lt; Index_, Data_ &gt; &amp;data, const Initialize&lt; Index_, Data_, Cluster_, Float_, Matrix&lt; Index_, Data_ &gt; &gt; &amp;initialize, const Refine&lt; Index_, Data_, Cluster_, Float_, Matrix&lt; Index_, Data_ &gt; &gt; &amp;refine, const Cluster_ num_centers)</arglist>
     </member>
     <member kind="function">
-      <type>void</type>
+      <type>int</type>
       <name>parallelize</name>
       <anchorfile>namespacekmeans.html</anchorfile>
-      <anchor>a554562a5b1c75d7494de4e541a77ca30</anchor>
+      <anchor>a0e5998de24c447715a844a060ceab221</anchor>
       <arglist>(const int num_workers, const Task_ num_tasks, Run_ run_task_range)</arglist>
     </member>
     <member kind="function">

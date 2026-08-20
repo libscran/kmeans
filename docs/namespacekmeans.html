@@ -199,9 +199,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae303d8fa2b9b3c9ce93cf90252b9c95b" id="r_ae303d8fa2b9b3c9ce93cf90252b9c95b"><td class="memTemplParams" colspan="2">template&lt;typename Index_ , typename Data_ , typename Cluster_ , typename Float_ &gt; </td></tr>
 <tr class="memitem:ae303d8fa2b9b3c9ce93cf90252b9c95b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structkmeans_1_1Results.html">Results</a>&lt; Index_, Cluster_, Float_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae303d8fa2b9b3c9ce93cf90252b9c95b">compute</a> (const <a class="el" href="classkmeans_1_1Matrix.html">Matrix</a>&lt; Index_, Data_ &gt; &amp;data, const <a class="el" href="classkmeans_1_1Initialize.html">Initialize</a>&lt; Index_, Data_, Cluster_, Float_, <a class="el" href="classkmeans_1_1Matrix.html">Matrix</a>&lt; Index_, Data_ &gt; &gt; &amp;initialize, const <a class="el" href="classkmeans_1_1Refine.html">Refine</a>&lt; Index_, Data_, Cluster_, Float_, <a class="el" href="classkmeans_1_1Matrix.html">Matrix</a>&lt; Index_, Data_ &gt; &gt; &amp;refine, const Cluster_ num_centers)</td></tr>
 <tr class="separator:ae303d8fa2b9b3c9ce93cf90252b9c95b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a554562a5b1c75d7494de4e541a77ca30" id="r_a554562a5b1c75d7494de4e541a77ca30"><td class="memTemplParams" colspan="2">template&lt;typename Task_ , class Run_ &gt; </td></tr>
-<tr class="memitem:a554562a5b1c75d7494de4e541a77ca30"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a554562a5b1c75d7494de4e541a77ca30">parallelize</a> (const int num_workers, const Task_ num_tasks, Run_ run_task_range)</td></tr>
-<tr class="separator:a554562a5b1c75d7494de4e541a77ca30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e5998de24c447715a844a060ceab221" id="r_a0e5998de24c447715a844a060ceab221"><td class="memTemplParams" colspan="2">template&lt;typename Task_ , class Run_ &gt; </td></tr>
+<tr class="memitem:a0e5998de24c447715a844a060ceab221"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0e5998de24c447715a844a060ceab221">parallelize</a> (const int num_workers, const Task_ num_tasks, Run_ run_task_range)</td></tr>
+<tr class="separator:a0e5998de24c447715a844a060ceab221"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3a9ad73447e8295259736b22a294b00" id="r_ac3a9ad73447e8295259736b22a294b00"><td class="memTemplParams" colspan="2">template&lt;typename Index_ , typename Cluster_ , typename Float_ &gt; </td></tr>
 <tr class="memitem:ac3a9ad73447e8295259736b22a294b00"><td class="memTemplItemLeft" align="right" valign="top">Cluster_&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac3a9ad73447e8295259736b22a294b00">remove_unused_centers</a> (const std::size_t num_dimensions, const Index_ num_observations, Cluster_ *const clusters, const Cluster_ num_centers, Float_ *const centers, std::vector&lt; Index_ &gt; &amp;sizes)</td></tr>
 <tr class="separator:ac3a9ad73447e8295259736b22a294b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -551,8 +551,8 @@ template&lt;class Matrix_ , typename Cluster_ , typename Float_ &gt; </div>
 
 </div>
 </div>
-<a id="a554562a5b1c75d7494de4e541a77ca30" name="a554562a5b1c75d7494de4e541a77ca30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a554562a5b1c75d7494de4e541a77ca30">&#9670;&#160;</a></span>parallelize()</h2>
+<a id="a0e5998de24c447715a844a060ceab221" name="a0e5998de24c447715a844a060ceab221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e5998de24c447715a844a060ceab221">&#9670;&#160;</a></span>parallelize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -560,7 +560,7 @@ template&lt;class Matrix_ , typename Cluster_ , typename Float_ &gt; </div>
 template&lt;typename Task_ , class Run_ &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void kmeans::parallelize </td>
+          <td class="memname">int kmeans::parallelize </td>
           <td>(</td>
           <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>num_workers</em></span>, </td>
         </tr>
@@ -591,7 +591,8 @@ template&lt;typename Task_ , class Run_ &gt; </div>
   </table>
   </dd>
 </dl>
-<p>By default, this is an alias to <code><a class="elRef" href="https://ltla.github.io/subpar/namespacesubpar.html#aa2ea2594f895ea5837bd3df8ad31af14">subpar::parallelize_range()</a></code>. However, if the <code>KMEANS_CUSTOM_PARALLEL</code> function-like macro is defined, it is called instead. Any user-defined macro should accept the same arguments as <code><a class="elRef" href="https://ltla.github.io/subpar/namespacesubpar.html#aa2ea2594f895ea5837bd3df8ad31af14">subpar::parallelize_range()</a></code>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Number of used workers \(U\), where <code>run_task_range()</code> is called once per integer in \([0, U)\).</dd></dl>
+<p>By default, this is an alias to <code><a class="elRef" href="https://ltla.github.io/subpar/namespacesubpar.html#aa2ea2594f895ea5837bd3df8ad31af14">subpar::parallelize_range()</a></code>. However, if the <code>KMEANS_CUSTOM_PARALLEL</code> function-like macro is defined, it is called instead. Any user-defined macro should accept the same arguments as <code><a class="elRef" href="https://ltla.github.io/subpar/namespacesubpar.html#aa2ea2594f895ea5837bd3df8ad31af14">subpar::parallelize_range()</a></code> and return the number of used workers. </p>
 
 </div>
 </div>
