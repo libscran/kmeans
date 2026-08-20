@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(kmeans
-    VERSION 4.0.6
+project(
+    kmeans
+    VERSION 4.0.7
     DESCRIPTION "K-means clustering in C++"
-    LANGUAGES CXX)
+    LANGUAGES CXX
+)
 
 add_library(kmeans INTERFACE)
 add_library(ltla::kmeans ALIAS kmeans)
