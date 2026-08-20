@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     container: bioconductor/bioconductor_docker:devel
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Get latest CMake
       uses: lukka/get-cmake@latest
@@ -24,7 +24,7 @@ jobs:
       run: echo "R_PKG_DIR=${R_HOME}/site-library" >> $GITHUB_ENV
 
     - name: Restore the package directory
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: ${{ env.R_PKG_DIR }}
         key: preinstalled-packages

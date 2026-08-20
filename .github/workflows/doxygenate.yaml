@@ -9,22 +9,16 @@ jobs:
   doxygenator:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Add Pretty CSS
-      uses: wei/wget@v1
-      with:
-        args: -O docs/doxygen-awesome.css https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
+      run: curl -L https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css -o docs/doxygen-awesome.css 
 
     - name: Fetch powerit tagfile
-      uses: wei/wget@v1
-      with:
-        args: -O docs/powerit.tag https://ltla.github.io/powerit/powerit.tag
+      run: curl -L https://ltla.github.io/powerit/powerit.tag -o docs/powerit.tag 
 
     - name: Fetch subpar tagfile
-      uses: wei/wget@v1
-      with:
-        args: -O docs/subpar.tag https://ltla.github.io/subpar/subpar.tag
+      run: curl -L https://ltla.github.io/subpar/subpar.tag -o docs/subpar.tag 
 
     - name: Doxygen Action
       uses: mattnotmitt/doxygen-action@v1
